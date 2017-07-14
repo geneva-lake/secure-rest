@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+	<changeSet
+		id="schema_user_management"
+		author="test-task">
+
+		<comment>User management</comment>
+
+		<createTable tableName="user">
+			<column
+				name="id"
+				autoIncrement="true"
+				type="int">
+				<constraints
+					primaryKey="true"
+					nullable="false"
+					primaryKeyName="pk_user" />
+			</column>
+			<column
+				name="first_name"
+				type="varchar(128)"></column>
+			<column
+				name="last_name"
+				type="varchar(128)"></column>
+			<column
+				name="email"
+				type="varchar(128)"></column>
+			<column
+				name="password"
+				type="varchar(128)"></column>
+		</createTable>
+
+		<createTable tableName="persistent_login">
+			<column
+				name="username"
+				type="varchar(128)">
+				<constraints nullable="false" />
+			</column>
+			<column
+				name="series"
+				type="varchar(64)">
+				<constraints
+					nullable="false"
+					primaryKey="true"
+					primaryKeyName="persistent_login_pk" />
+			</column>
+			<column
+				name="token"
+				type="varchar(64)">
+				<constraints nullable="false" />
+			</column>
+			<column
+				name="last_used"
+				type="timestamp">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+	</changeSet>
+</databaseChangeLog>
